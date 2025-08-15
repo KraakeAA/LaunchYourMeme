@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaunchYourMeme.com - Turn Your Brand into a Viral Marketing Engine</title>
+    <title>LaunchYourMeme.com - Community Marketing for Modern Brands</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,88 +11,60 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --color-bg: #05020D;
-            --color-primary: #9f7aea; /* Purple */
-            --color-secondary: #ed64a6; /* Pink */
-            --color-accent: #4fd1c5; /* Teal */
+            --color-bg: #02040A;
+            --color-primary: #A78BFA; /* Violet */
+            --color-secondary: #F472B6; /* Pink */
+            --color-text: #E6EDF3;
+            --color-border: rgba(255, 255, 255, 0.1);
         }
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--color-bg);
-            color: #f0f0f0;
+            color: var(--color-text);
         }
         .gradient-text {
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradient-flow 5s ease infinite;
-            background-size: 200% 200%;
-        }
-        @keyframes gradient-flow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
         .hero-glow {
-            box-shadow: 0 0 100px 30px rgba(159, 122, 234, 0.3), 0 0 120px 40px rgba(237, 100, 166, 0.2);
+            box-shadow: 0 0 200px 50px rgba(167, 139, 250, 0.15), 0 0 250px 70px rgba(244, 114, 182, 0.1);
         }
-        .card-border-glow {
-            position: relative;
-            border: 1px solid transparent;
-            background-color: rgba(255, 255, 255, 0.03);
-            background-clip: padding-box;
-            border-radius: 1.5rem; /* 24px */
-            transition: transform 0.3s ease, background-color 0.3s ease;
+        .card {
+            background-color: rgba(13, 17, 23, 0.5);
+            border: 1px solid var(--color-border);
+            backdrop-filter: blur(12px);
+            border-radius: 1.5rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        .card-border-glow:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255, 255, 255, 0.05);
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
         }
-        .card-border-glow::before {
+        .primary-button {
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .primary-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+        }
+        .step-item::before {
             content: '';
             position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            z-index: -1;
-            margin: -1px;
-            border-radius: inherit;
-            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+            left: -2rem;
+            top: 0.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            opacity: 0.2;
         }
-        .card-border-glow:hover::before {
-            opacity: 1;
+        details > summary {
+            list-style: none;
         }
-        .stat-box {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
-        .stat-box:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .step-line {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 2.5rem;
-            bottom: -2.5rem;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary), transparent);
-            transform: translateX(-50%);
-            z-index: -1;
-        }
-        .step-item:last-child .step-line {
+        details > summary::-webkit-details-marker {
             display: none;
-        }
-        .partner-logo {
-            filter: grayscale(100%) brightness(1.5);
-            transition: filter 0.3s ease;
-        }
-        .partner-logo:hover {
-            filter: grayscale(0%) brightness(1);
         }
     </style>
 </head>
@@ -103,205 +75,215 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold gradient-text">LaunchYourMeme</h1>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#what-it-is" class="text-gray-300 hover:text-white transition-colors">What is this?</a>
+                <a href="#what-it-is" class="text-gray-300 hover:text-white transition-colors">The Idea</a>
                 <a href="#how-it-works" class="text-gray-300 hover:text-white transition-colors">Our Process</a>
                 <a href="#advantage" class="text-gray-300 hover:text-white transition-colors">Your Advantage</a>
-                <a href="#contact" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">Get Started</a>
+                <a href="#faq" class="text-gray-300 hover:text-white transition-colors">FAQ</a>
             </nav>
+            <a href="#contact" class="hidden md:block primary-button text-white font-semibold py-2 px-5 rounded-lg">Get a Proposal</a>
             <button id="mobile-menu-button" class="md:hidden text-white">
                 <i data-lucide="menu"></i>
             </button>
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#what-it-is" class="block py-2 text-gray-300 hover:text-white">What is this?</a>
-            <a href="#how-it-works" class="block py-2 text-gray-300 hover:text-white">Our Process</a>
-            <a href="#advantage" class="block py-2 text-gray-300 hover:text-white">Your Advantage</a>
-            <a href="#contact" class="block mt-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 px-4 rounded-lg text-center">Get Started</a>
+             <a href="#what-it-is" class="block py-2 text-gray-300 hover:text-white">The Idea</a>
+             <a href="#how-it-works" class="block py-2 text-gray-300 hover:text-white">Our Process</a>
+             <a href="#advantage" class="block py-2 text-gray-300 hover:text-white">Your Advantage</a>
+             <a href="#faq" class="block py-2 text-gray-300 hover:text-white">FAQ</a>
+             <a href="#contact" class="block mt-2 primary-button text-white font-semibold py-2 px-4 rounded-lg text-center">Get a Proposal</a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
         <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-            <div class="absolute inset-0 bg-black">
-                <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at center, #3c1b4b 0, transparent 60%);"></div>
-                <div class="absolute top-1/2 left-1/2 w-[40rem] h-[40rem] md:w-[60rem] md:h-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-full hero-glow opacity-50"></div>
-            </div>
+            <div class="absolute top-1/2 left-1/2 w-[50rem] h-[50rem] -translate-x-1/2 -translate-y-1/2 rounded-full hero-glow opacity-50"></div>
             <div class="container mx-auto px-6 text-center relative z-10">
                 <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-                    Stop Buying Ads.
-                    <span class="block gradient-text mt-2">Create a Cultural Movement.</span>
+                    Stop Buying Ads
+                    <span class="block gradient-text mt-2">Turn Customers Into Your Marketing Team</span>
                 </h2>
-                <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-                    Harness the power of meme culture to build a loyal community that markets your brand for you. This is the new frontier of customer engagement.
+                <p class="mt-6 text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+                    We create engaging, community-focused digital tokens that transform your passive followers into active brand ambassadors. It's the future of customer loyalty.
                 </p>
                 <div class="mt-10 flex justify-center items-center gap-4">
-                    <a href="#contact" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg shadow-purple-600/30">Start Your Revolution</a>
+                    <a href="#contact" class="primary-button text-white font-bold py-4 px-8 rounded-full text-lg">Start Your Community Revolution</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- "Who Is This For?" Section -->
+        <section id="who-is-this-for" class="py-20 sm:py-24">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="lg:pr-12">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Are You Ready for Next-Gen Marketing?</h2>
+                        <p class="text-gray-400 text-lg mb-6">This isn't for everyone. Our service is designed for forward-thinking brands that understand the value of community and want to build a powerful, long-term competitive advantage.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start"><i data-lucide="gem" class="h-6 w-6 text-violet-400 mr-3 mt-1 shrink-0"></i><p><strong>Consumer Brands</strong> looking to build a cult following and deepen customer loyalty.</p></div>
+                            <div class="flex items-start"><i data-lucide="mouse-pointer-click" class="h-6 w-6 text-violet-400 mr-3 mt-1 shrink-0"></i><p><strong>Digital Businesses & Startups</strong> aiming for viral growth and organic market penetration.</p></div>
+                            <div class="flex items-start"><i data-lucide="users" class="h-6 w-6 text-violet-400 mr-3 mt-1 shrink-0"></i><p><strong>Creators & Personalities</strong> wanting to give their audience a true sense of ownership and community.</p></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="card p-6 text-center"><i data-lucide="shopping-cart" class="h-12 w-12 text-violet-400 mx-auto mb-3"></i><span class="font-semibold">E-commerce</span></div>
+                        <div class="card p-6 text-center"><i data-lucide="gamepad-2" class="h-12 w-12 text-violet-400 mx-auto mb-3"></i><span class="font-semibold">Gaming</span></div>
+                        <div class="card p-6 text-center"><i data-lucide="utensils-crossed" class="h-12 w-12 text-violet-400 mx-auto mb-3"></i><span class="font-semibold">Food & Beverage</span></div>
+                        <div class="card p-6 text-center"><i data-lucide="shirt" class="h-12 w-12 text-violet-400 mx-auto mb-3"></i><span class="font-semibold">Fashion & Apparel</span></div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- What is a Brand Memecoin? Section -->
-        <section id="what-it-is" class="py-20 sm:py-32">
-            <div class="container mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">What Exactly Is a Brand Memecoin?</h2>
-                    <p class="text-gray-400 text-lg">Forget complex crypto jargon. Think of it as the ultimate loyalty program. You're giving your customers a fun, digital way to be part of your brand's story, and rewarding them for their passion.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8 mt-16">
-                    <div class="p-8 rounded-3xl card-border-glow text-center">
-                        <div class="p-3 inline-block bg-purple-600/20 rounded-xl mb-4"><i data-lucide="gift" class="text-purple-400 h-8 w-8"></i></div>
-                        <h4 class="text-2xl font-semibold mb-3">Loyalty Points 2.0</h4>
-                        <p class="text-gray-400">Instead of points they forget, customers get a digital token. They can hold it, trade it, or use it for exclusive perks. It's a reward that feels like an investment.</p>
+        <section id="what-it-is" class="py-20 sm:py-24 bg-gray-900/40">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">The Big Idea: From Passive Audience to Active Army</h2>
+                <p class="text-gray-400 text-lg max-w-3xl mx-auto">Forget crypto jargon. A brand token is a digital key to your brand's universe. It's a tool that rewards your biggest fans and gives them a reason to shout about you from the rooftops.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mt-16 max-w-5xl mx-auto">
+                    <div class="card p-8 text-left">
+                        <h3 class="text-2xl font-semibold mb-4 text-red-400">The Old Way: "Rent an Audience"</h3>
+                        <ul class="space-y-3 text-gray-400">
+                            <li class="flex items-start"><i data-lucide="x-circle" class="h-5 w-5 mr-3 mt-1 shrink-0"></i>Pay endlessly for ads on social media.</li>
+                            <li class="flex items-start"><i data-lucide="x-circle" class="h-5 w-5 mr-3 mt-1 shrink-0"></i>Customers are passive followers with weak loyalty.</li>
+                            <li class="flex items-start"><i data-lucide="x-circle" class="h-5 w-5 mr-3 mt-1 shrink-0"></i>Engagement is low, and word-of-mouth is rare.</li>
+                            <li class="flex items-start"><i data-lucide="x-circle" class="h-5 w-5 mr-3 mt-1 shrink-0"></i>You're at the mercy of platform algorithms.</li>
+                        </ul>
                     </div>
-                    <div class="p-8 rounded-3xl card-border-glow text-center">
-                        <div class="p-3 inline-block bg-pink-600/20 rounded-xl mb-4"><i data-lucide="users" class="text-pink-400 h-8 w-8"></i></div>
-                        <h4 class="text-2xl font-semibold mb-3">A Digital Fan Club</h4>
-                        <p class="text-gray-400">Your token holders form a powerful community. They're not just customers; they're co-owners of the brand's culture, motivated to see it succeed and spread the word.</p>
-                    </div>
-                    <div class="p-8 rounded-3xl card-border-glow text-center">
-                        <div class="p-3 inline-block bg-teal-600/20 rounded-xl mb-4"><i data-lucide="megaphone" class="text-teal-400 h-8 w-8"></i></div>
-                        <h4 class="text-2xl font-semibold mb-3">A Self-Funding Ad</h4>
-                        <p class="text-gray-400">As your community grows and the token gains popularity, it generates buzz on its own. It's word-of-mouth marketing that pays for itself, reaching thousands organically.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Stats Section -->
-        <section id="stats" class="py-20 bg-gray-900/40">
-            <div class="container mx-auto px-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="stat-box p-6 text-center">
-                        <p class="text-4xl font-bold gradient-text">50+</p>
-                        <p class="mt-2 text-gray-400 text-lg">Brands Launched</p>
-                    </div>
-                    <div class="stat-box p-6 text-center">
-                        <p class="text-4xl font-bold gradient-text">$15M+</p>
-                        <p class="mt-2 text-gray-400 text-lg">Total Value Created</p>
-                    </div>
-                    <div class="stat-box p-6 text-center">
-                        <p class="text-4xl font-bold gradient-text">500k+</p>
-                        <p class="mt-2 text-gray-400 text-lg">Community Members</p>
-                    </div>
-                    <div class="stat-box p-6 text-center">
-                        <p class="text-4xl font-bold gradient-text">1200%</p>
-                        <p class="mt-2 text-gray-400 text-lg">Avg. Brand Reach Growth</p>
+                    <div class="card p-8 text-left border-violet-400">
+                        <h3 class="text-2xl font-semibold mb-4 text-green-400">The New Way: "Own Your Community"</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start"><i data-lucide="check-circle" class="h-5 w-5 text-green-400 mr-3 mt-1 shrink-0"></i>Create a one-time marketing asset.</li>
+                            <li class="flex items-start"><i data-lucide="check-circle" class="h-5 w-5 text-green-400 mr-3 mt-1 shrink-0"></i>Customers become invested brand ambassadors.</li>
+                            <li class="flex items-start"><i data-lucide="check-circle" class="h-5 w-5 text-green-400 mr-3 mt-1 shrink-0"></i>Community generates organic buzz and content.</li>
+                            <li class="flex items-start"><i data-lucide="check-circle" class="h-5 w-5 text-green-400 mr-3 mt-1 shrink-0"></i>You build a direct line to your superfans.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- How It Works Section -->
-        <section id="how-it-works" class="py-20 sm:py-32">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Simple, All-Inclusive Process</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto mb-16 text-lg">You bring the brand, we handle everything else. We've streamlined the entire journey to be completely hands-off and transparent for you.</p>
-                <div class="grid md:grid-cols-4 gap-8">
-                    <!-- Steps 1-4 -->
-                    <div class="relative text-center step-item">
-                        <div class="relative inline-block">
-                             <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-purple-500 shadow-lg shadow-purple-500/20">
-                                <span class="text-3xl font-bold gradient-text">1</span>
-                            </div>
-                            <div class="step-line hidden md:block"></div>
-                        </div>
-                        <h4 class="mt-6 text-xl font-semibold">Brand Discovery</h4>
-                        <p class="mt-2 text-gray-400">We learn your brand's voice and goals to create a memecoin concept that feels authentic and exciting to your audience.</p>
-                    </div>
-                    <div class="relative text-center step-item">
-                         <div class="relative inline-block">
-                            <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-purple-500 shadow-lg shadow-purple-500/20">
-                                <span class="text-3xl font-bold gradient-text">2</span>
-                            </div>
-                            <div class="step-line hidden md:block"></div>
-                        </div>
-                        <h4 class="mt-6 text-xl font-semibold">Technical Launch</h4>
-                        <p class="mt-2 text-gray-400">Our team handles all the complex tech stuff: creating the token, ensuring security, and listing it for your community.</p>
-                    </div>
-                    <div class="relative text-center step-item">
-                         <div class="relative inline-block">
-                            <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-pink-500 shadow-lg shadow-pink-500/20">
-                                <span class="text-3xl font-bold gradient-text">3</span>
-                            </div>
-                            <div class="step-line hidden md:block"></div>
-                        </div>
-                        <h4 class="mt-6 text-xl font-semibold">Community Ignition</h4>
-                        <p class="mt-2 text-gray-400">We kickstart the conversation and build the initial hype across social media to get your fan club started.</p>
-                    </div>
-                    <div class="relative text-center step-item">
-                         <div class="relative inline-block">
-                            <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-pink-500 shadow-lg shadow-pink-500/20">
-                                <span class="text-3xl font-bold gradient-text">4</span>
-                            </div>
-                        </div>
-                        <h4 class="mt-6 text-xl font-semibold">Sustained Growth</h4>
-                        <p class="mt-2 text-gray-400">We don't just launch and leave. We provide ongoing marketing support to keep the momentum and community growing.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Memecoins Section -->
-        <section id="advantage" class="py-20 sm:py-32 bg-gray-900/40">
+        <section id="how-it-works" class="py-20 sm:py-24">
             <div class="container mx-auto px-6">
                  <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Your Unfair Marketing Advantage</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto text-lg">This isn't just another marketing channel. It's a way to build a competitive moat around your brand that others can't replicate.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Turnkey Process</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg">You focus on your business. We handle every technical detail from concept to community management, ensuring a secure and professional launch.</p>
                 </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Cards -->
-                    <div class="p-8 rounded-3xl card-border-glow">
-                        <div class="p-3 inline-block bg-purple-600/20 rounded-xl mb-4"><i data-lucide="rocket" class="text-purple-400 h-8 w-8"></i></div>
-                        <h4 class="text-2xl font-semibold mb-3">Unlock Organic Virality</h4>
-                        <p class="text-gray-400">Give people a reason to talk about you. A memecoin is fun, novel, and shareable, turning your customers into a volunteer marketing army.</p>
-                    </div>
-                    <div class="p-8 rounded-3xl card-border-glow">
-                        <div class="p-3 inline-block bg-pink-600/20 rounded-xl mb-4"><i data-lucide="heart-handshake" class="text-pink-400 h-8 w-8"></i></div>
-                        <h4 class="text-2xl font-semibold mb-3">Create Superfans, Not Customers</h4>
-                        <p class="text-gray-400">When customers hold your token, they're financially and emotionally invested. Their success is tied to yours, creating unparalleled brand loyalty.</p>
-                    </div>
-                    <div class="p-8 rounded-3xl card-border-glow">
-                        <div class="p-3 inline-block bg-teal-600/20 rounded-xl mb-4"><i data-lucide="pie-chart" class="text-teal-400 h-8 w-8"></i></div>
-                        <h4 class="text-2xl font-semibold mb-3">Own Your Audience</h4>
-                        <p class="text-gray-400">Stop renting your audience from social media giants. Build a direct line to your most passionate supporters in a community you control.</p>
+                <div class="max-w-2xl mx-auto relative">
+                    <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-800"></div>
+                    <div class="space-y-12">
+                        <div class="relative pl-12 step-item">
+                            <div class="absolute left-0 top-0 flex items-center justify-center w-8 h-8 bg-gray-800 border-2 border-violet-400 rounded-full text-violet-400 font-bold">1</div>
+                            <h4 class="text-xl font-semibold mb-2">Phase 1: Strategy & Concept</h4>
+                            <p class="text-gray-400">We collaborate with you to understand your brand's unique culture. We then design a token concept, name, and utility that resonates perfectly with your target audience and marketing goals.</p>
+                        </div>
+                        <div class="relative pl-12 step-item">
+                            <div class="absolute left-0 top-0 flex items-center justify-center w-8 h-8 bg-gray-800 border-2 border-violet-400 rounded-full text-violet-400 font-bold">2</div>
+                            <h4 class="text-xl font-semibold mb-2">Phase 2: Token Creation & Launch</h4>
+                            <p class="text-gray-400">We handle the entire technical process of creating and launching your brand's unique token, ensuring a seamless and secure debut for your community.</p>
+                        </div>
+                        <div class="relative pl-12 step-item">
+                            <div class="absolute left-0 top-0 flex items-center justify-center w-8 h-8 bg-gray-800 border-2 border-violet-400 rounded-full text-violet-400 font-bold">3</div>
+                            <h4 class="text-xl font-semibold mb-2">Phase 3: Community Building</h4>
+                            <p class="text-gray-400">With the token live, we shift focus to building your tribe. We create the social hubs (like Discord & X) and execute an initial marketing push to attract the first wave of brand advocates.</p>
+                        </div>
+                        <div class="relative pl-12 step-item">
+                            <div class="absolute left-0 top-0 flex items-center justify-center w-8 h-8 bg-gray-800 border-2 border-violet-400 rounded-full text-violet-400 font-bold">4</div>
+                            <h4 class="text-xl font-semibold mb-2">Phase 4: Ongoing Growth & Support</h4>
+                            <p class="text-gray-400">Our work doesn't stop at launch. We provide you with a growth playbook and can offer ongoing community management and marketing services to ensure the momentum continues to build long-term.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Partners Section -->
-        <section id="partners" class="py-20">
+        <!-- Our Principles Section -->
+        <section id="principles" class="py-20 sm:py-24 bg-gray-900/40">
             <div class="container mx-auto px-6">
-                <h2 class="text-center text-2xl font-bold text-gray-400 mb-12">Trusted By & Seen On</h2>
-                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
-                    <img src="https://placehold.co/150x50/05020D/888888?text=CoinGecko" alt="CoinGecko Logo" class="h-8 partner-logo">
-                    <img src="https://placehold.co/150x50/05020D/888888?text=DEXTools" alt="DEXTools Logo" class="h-8 partner-logo">
-                    <img src="https://placehold.co/150x50/05020D/888888?text=TechCrunch" alt="TechCrunch Logo" class="h-8 partner-logo">
-                    <img src="https://placehold.co/150x50/05020D/888888?text=Uniswap" alt="Uniswap Logo" class="h-10 partner-logo">
-                    <img src="https://placehold.co/150x50/05020D/888888?text=Forbes" alt="Forbes Logo" class="h-8 partner-logo">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Built on a Foundation of Trust</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg">We understand you're entering a new space. Our entire process is built around security, transparency, and a clear focus on marketing outcomes.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card p-8">
+                        <div class="p-3 inline-block bg-violet-600/20 rounded-xl mb-4"><i data-lucide="shield-check" class="text-violet-400 h-8 w-8"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3">Security First</h4>
+                        <p class="text-gray-400">Every token we create is audited by reputable third-party firms. We prioritize the safety of your brand and your community above all else.</p>
+                    </div>
+                    <div class="card p-8">
+                        <div class="p-3 inline-block bg-pink-600/20 rounded-xl mb-4"><i data-lucide="eye" class="text-pink-400 h-8 w-8"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3">Full Transparency</h4>
+                        <p class="text-gray-400">You and your community will have a clear understanding of the token's purpose and distribution. No jargon, no hidden details.</p>
+                    </div>
+                    <div class="card p-8">
+                        <div class="p-3 inline-block bg-violet-600/20 rounded-xl mb-4"><i data-lucide="megaphone" class="text-violet-400 h-8 w-8"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3">Marketing, Not Investment</h4>
+                        <p class="text-gray-400">We structure every project as a marketing and loyalty service. Our goal is to drive engagement for your brand, not to create a financial asset.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 sm:py-24">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg">We know you have questions. Here are some straightforward answers to the most common ones.</p>
+                </div>
+                <div class="space-y-6">
+                    <details class="card p-6 cursor-pointer group">
+                        <summary class="font-semibold text-lg flex justify-between items-center">
+                            Is this legal and compliant?
+                            <i data-lucide="chevron-down" class="transition-transform duration-300 group-open:rotate-180"></i>
+                        </summary>
+                        <p class="text-gray-400 mt-4">Absolutely. We structure every project as a marketing service, focusing on the token's "utility" (like perks and access) rather than as a financial investment. We work diligently to operate within the UK's financial promotion guidelines, ensuring all communications are fair, clear, and include the necessary risk information.</p>
+                    </details>
+                    <details class="card p-6 cursor-pointer group">
+                        <summary class="font-semibold text-lg flex justify-between items-center">
+                            Do my customers need to be crypto experts?
+                            <i data-lucide="chevron-down" class="transition-transform duration-300 group-open:rotate-180"></i>
+                        </summary>
+                        <p class="text-gray-400 mt-4">Not at all. We provide simple, step-by-step guides and support to make acquiring and using the token easy for everyone, regardless of their technical knowledge. The focus is on the fun and the community, not the complex technology behind it.</p>
+                    </details>
+                    <details class="card p-6 cursor-pointer group">
+                        <summary class="font-semibold text-lg flex justify-between items-center">
+                            How is this different from a standard points-based loyalty program?
+                            <i data-lucide="chevron-down" class="transition-transform duration-300 group-open:rotate-180"></i>
+                        </summary>
+                        <p class="text-gray-400 mt-4">Three key ways: 1) **Ownership:** Customers truly own their tokens, creating a much deeper psychological connection. 2) **Community:** It creates a shared identity and a "club" atmosphere that points can't replicate. 3) **Virality:** The public nature of tokens means every new member and every interaction can be seen, creating organic buzz and social proof that traditional programs lack.</p>
+                    </details>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 sm:py-32 bg-gray-900/40">
+        <section id="contact" class="py-20 sm:py-24">
             <div class="container mx-auto px-6">
-                <div class="bg-gray-900 rounded-3xl p-8 md:p-16 relative overflow-hidden">
-                    <div class="absolute -top-20 -right-20 w-60 h-60 bg-purple-600/20 rounded-full blur-3xl"></div>
-                    <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-pink-600/20 rounded-full blur-3xl"></div>
+                <div class="bg-gray-900/50 border border-gray-800 rounded-3xl p-8 md:p-16 relative overflow-hidden">
+                    <div class="absolute -top-20 -right-20 w-60 h-60 bg-violet-600/10 rounded-full blur-3xl"></div>
+                    <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-pink-600/10 rounded-full blur-3xl"></div>
                     <div class="relative z-10 text-center max-w-2xl mx-auto">
                         <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Build Your Movement?</h2>
-                        <p class="text-gray-400 mb-8 text-lg">Let's have a no-obligation chat about how this new marketing tool can transform your brand. Fill out the form below to get started.</p>
-                        <form id="contact-form" class="space-y-6">
+                        <p class="text-gray-400 mb-8 text-lg">Let's have a no-obligation chat about how this new marketing tool can transform your brand. Fill out the form below to get a customized proposal.</p>
+                        <!-- 
+                            FORM SETUP INSTRUCTIONS:
+                            1. Go to https://formspree.io/ and create a free account.
+                            2. Create a "New Form" and set its destination email to your company's email address.
+                            3. Formspree will give you a unique URL endpoint.
+                            4. Replace the placeholder URL in the `action` attribute below with your unique Formspree URL.
+                        -->
+                        <form id="contact-form" action="https://formspree.io/f/your_unique_code" method="POST" class="space-y-6">
                             <div class="grid sm:grid-cols-2 gap-6">
-                                <input type="text" placeholder="Your Name" name="name" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all">
-                                <input type="email" placeholder="Your Email" name="email" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all">
+                                <input type="text" name="name" placeholder="Your Name" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all">
+                                <input type="email" name="email" placeholder="Your Email" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all">
                             </div>
-                            <input type="text" placeholder="Company Name" name="company" class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all">
-                            <textarea placeholder="Tell us about your brand..." name="message" rows="4" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"></textarea>
-                            <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg shadow-purple-600/30">Request a Free Consultation</button>
+                            <input type="text" name="company" placeholder="Company Name" class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all">
+                            <textarea name="message" placeholder="Tell us about your brand..." rows="4" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all"></textarea>
+                            <button type="submit" class="w-full primary-button text-white font-bold py-3 px-8 rounded-full text-lg">Request a Free Proposal</button>
                         </form>
                         <div id="form-message" class="mt-4 text-lg"></div>
                     </div>
@@ -312,18 +294,22 @@
 
     <!-- Footer -->
     <footer class="border-t border-gray-800">
-        <div class="container mx-auto px-6 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <p class="text-gray-500">&copy; 2025 LaunchYourMeme.com. All Rights Reserved.</p>
-                <div class="flex space-x-6">
+        <div class="container mx-auto px-6 py-12">
+            <div class="text-center mb-8">
+                <h4 class="text-xl font-bold gradient-text mb-2">LaunchYourMeme</h4>
+                <p class="text-gray-500">The Future of Community Marketing</p>
+                <div class="flex justify-center space-x-6 mt-4">
                     <a href="https://x.com" target="_blank" class="text-gray-500 hover:text-white">
-                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
-                        </svg>
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
                     </a>
                     <a href="https://telegram.org" target="_blank" class="text-gray-500 hover:text-white"><i data-lucide="send"></i></a>
                     <a href="https://discord.com" target="_blank" class="text-gray-500 hover:text-white"><i data-lucide="message-circle"></i></a>
                 </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-600 text-sm">
+                <p class="font-bold mb-2">UK Financial Promotion Disclaimer:</p>
+                <p class="max-w-3xl mx-auto">Don't invest unless you're prepared to lose all the money you invest. This is a high-risk investment and you are unlikely to be protected if something goes wrong. Our services are structured as a marketing and loyalty program. The digital tokens are intended for utility and community engagement purposes, not as financial investments.</p>
+                <p class="mt-6 text-gray-500">&copy; 2025 LaunchYourMeme.com. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -346,7 +332,6 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
-                // Close mobile menu on link click
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
                 }
@@ -358,24 +343,49 @@
         const formMessage = document.getElementById('form-message');
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            const form = e.target;
+            const data = new FormData(form);
+            const action = form.action;
             
-            const name = contactForm.elements['name'].value;
-            const email = contactForm.elements['email'].value;
-            const message = contactForm.elements['message'].value;
+            fetch(action, {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    formMessage.textContent = 'Thank you! We\'ve received your request and will be in touch shortly.';
+                    formMessage.style.color = '#F472B6';
+                    form.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            formMessage.textContent = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            formMessage.textContent = 'Oops! There was a problem submitting your form';
+                        }
+                        formMessage.style.color = '#F87171'; // red-400
+                    })
+                }
+            }).catch(error => {
+                formMessage.textContent = 'Oops! There was a problem submitting your form';
+                formMessage.style.color = '#F87171'; // red-400
+            });
 
-            if (!name || !email || !message) {
-                formMessage.textContent = 'Please fill out all required fields.';
-                formMessage.style.color = '#f87171'; // red-400
-                return;
-            }
-
-            formMessage.textContent = 'Thank you! We\'ve received your request and will be in touch shortly.';
-            formMessage.style.color = '#4ade80'; // green-400
-            contactForm.reset();
-
-            setTimeout(() => {
-                formMessage.textContent = '';
-            }, 5000);
+            setTimeout(() => { formMessage.textContent = ''; }, 6000);
+        });
+        
+        // FAQ Accordion
+        document.querySelectorAll('details').forEach((detail) => {
+            detail.addEventListener('toggle', (event) => {
+                const icon = detail.querySelector('i[data-lucide="chevron-down"]');
+                if (detail.open) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
         });
     </script>
 </body>
