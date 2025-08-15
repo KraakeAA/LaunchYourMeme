@@ -3,31 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaunchYourMeme.com - Turn Your Brand into a Viral Memecoin</title>
+    <title>LaunchYourMeme.com - Turn Your Brand into a Viral Marketing Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        :root {
+            --color-bg: #05020D;
+            --color-primary: #9f7aea; /* Purple */
+            --color-secondary: #ed64a6; /* Pink */
+            --color-accent: #4fd1c5; /* Teal */
+        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
+            background-color: var(--color-bg);
             color: #f0f0f0;
         }
         .gradient-text {
-            background: linear-gradient(90deg, #4f46e5, #ec4899);
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s ease infinite;
+            background-size: 200% 200%;
+        }
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .hero-glow {
-            box-shadow: 0 0 80px 20px rgba(79, 70, 229, 0.4), 0 0 100px 30px rgba(236, 72, 153, 0.3);
+            box-shadow: 0 0 100px 30px rgba(159, 122, 234, 0.3), 0 0 120px 40px rgba(237, 100, 166, 0.2);
         }
         .card-border-glow {
             position: relative;
             border: 1px solid transparent;
+            background-color: rgba(255, 255, 255, 0.03);
             background-clip: padding-box;
             border-radius: 1.5rem; /* 24px */
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .card-border-glow:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.05);
         }
         .card-border-glow::before {
             content: '';
@@ -36,12 +55,23 @@
             z-index: -1;
             margin: -1px;
             border-radius: inherit;
-            background: linear-gradient(to right, #4f46e5, #ec4899);
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
         }
         .card-border-glow:hover::before {
             opacity: 1;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
         }
         .step-line {
             content: '';
@@ -50,12 +80,19 @@
             top: 2.5rem;
             bottom: -2.5rem;
             width: 2px;
-            background: linear-gradient(to bottom, #4f46e5, #ec4899, transparent);
+            background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary), transparent);
             transform: translateX(-50%);
             z-index: -1;
         }
         .step-item:last-child .step-line {
             display: none;
+        }
+        .partner-logo {
+            filter: grayscale(100%) brightness(1.5);
+            transition: filter 0.3s ease;
+        }
+        .partner-logo:hover {
+            filter: grayscale(0%) brightness(1);
         }
     </style>
 </head>
@@ -66,10 +103,10 @@
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold gradient-text">LaunchYourMeme</h1>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
-                <a href="#how-it-works" class="text-gray-300 hover:text-white transition-colors">How It Works</a>
-                <a href="#why-memecoins" class="text-gray-300 hover:text-white transition-colors">Why Memecoins?</a>
-                <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">Get Started</a>
+                <a href="#what-it-is" class="text-gray-300 hover:text-white transition-colors">What is this?</a>
+                <a href="#how-it-works" class="text-gray-300 hover:text-white transition-colors">Our Process</a>
+                <a href="#advantage" class="text-gray-300 hover:text-white transition-colors">Your Advantage</a>
+                <a href="#contact" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">Get Started</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden text-white">
                 <i data-lucide="menu"></i>
@@ -77,10 +114,10 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#about" class="block py-2 text-gray-300 hover:text-white">About</a>
-            <a href="#how-it-works" class="block py-2 text-gray-300 hover:text-white">How It Works</a>
-            <a href="#why-memecoins" class="block py-2 text-gray-300 hover:text-white">Why Memecoins?</a>
-            <a href="#contact" class="block mt-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg text-center">Get Started</a>
+            <a href="#what-it-is" class="block py-2 text-gray-300 hover:text-white">What is this?</a>
+            <a href="#how-it-works" class="block py-2 text-gray-300 hover:text-white">Our Process</a>
+            <a href="#advantage" class="block py-2 text-gray-300 hover:text-white">Your Advantage</a>
+            <a href="#contact" class="block mt-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-2 px-4 rounded-lg text-center">Get Started</a>
         </div>
     </header>
 
@@ -88,86 +125,101 @@
         <!-- Hero Section -->
         <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
             <div class="absolute inset-0 bg-black">
-                <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at center, #1e1b4b 0, transparent 60%);"></div>
+                <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at center, #3c1b4b 0, transparent 60%);"></div>
                 <div class="absolute top-1/2 left-1/2 w-[40rem] h-[40rem] md:w-[60rem] md:h-[60rem] -translate-x-1/2 -translate-y-1/2 rounded-full hero-glow opacity-50"></div>
             </div>
             <div class="container mx-auto px-6 text-center relative z-10">
                 <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-                    Go Viral. Go Crypto.
-                    <span class="block gradient-text mt-2">Launch Your Brand's Memecoin.</span>
+                    Stop Buying Ads.
+                    <span class="block gradient-text mt-2">Create a Cultural Movement.</span>
                 </h2>
                 <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-                    We transform your brand's identity into a powerful, community-driven memecoin. It's not just marketing; it's a cultural revolution.
+                    Harness the power of meme culture to build a loyal community that markets your brand for you. This is the new frontier of customer engagement.
                 </p>
                 <div class="mt-10 flex justify-center items-center gap-4">
-                    <a href="#contact" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg shadow-indigo-600/30">Start Your Revolution</a>
-                    <a href="#how-it-works" class="border-2 border-gray-600 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full text-lg transition-all transform hover:scale-105">Learn More</a>
+                    <a href="#contact" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg shadow-purple-600/30">Start Your Revolution</a>
                 </div>
             </div>
         </section>
 
-        <!-- About Us Section -->
-        <section id="about" class="py-20 sm:py-32">
+        <!-- What is a Brand Memecoin? Section -->
+        <section id="what-it-is" class="py-20 sm:py-32">
             <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h3 class="text-3xl md:text-4xl font-bold mb-4">We Are The <span class="gradient-text">Meme Marketing Catalysts</span></h3>
-                        <p class="text-gray-400 mb-6 text-lg">
-                            LaunchYourMeme.com was founded by a team of crypto natives, marketing gurus, and branding experts who saw the untapped potential of memecoins as a revolutionary marketing tool. Traditional advertising is dying. Engagement is everything.
-                        </p>
-                        <p class="text-gray-400 text-lg">
-                            We help small and medium-sized businesses harness the viral power of meme culture, creating dedicated communities and brand ambassadors in the most authentic way possible.
-                        </p>
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">What Exactly Is a Brand Memecoin?</h2>
+                    <p class="text-gray-400 text-lg">Forget complex crypto jargon. Think of it as the ultimate loyalty program. You're giving your customers a fun, digital way to be part of your brand's story, and rewarding them for their passion.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 mt-16">
+                    <div class="p-8 rounded-3xl card-border-glow text-center">
+                        <div class="p-3 inline-block bg-purple-600/20 rounded-xl mb-4"><i data-lucide="gift" class="text-purple-400 h-8 w-8"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3">Loyalty Points 2.0</h4>
+                        <p class="text-gray-400">Instead of points they forget, customers get a digital token. They can hold it, trade it, or use it for exclusive perks. It's a reward that feels like an investment.</p>
                     </div>
-                    <div class="p-8 bg-gray-900/50 rounded-3xl card-border-glow">
-                        <div class="flex items-center mb-4">
-                            <div class="p-3 bg-indigo-600/20 rounded-xl mr-4"><i data-lucide="rocket" class="text-indigo-400"></i></div>
-                            <div>
-                                <h4 class="font-semibold text-xl">Mission-Driven</h4>
-                                <p class="text-gray-400">To democratize viral marketing for every business.</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="p-3 bg-pink-600/20 rounded-xl mr-4"><i data-lucide="users" class="text-pink-400"></i></div>
-                            <div>
-                                <h4 class="font-semibold text-xl">Community-Focused</h4>
-                                <p class="text-gray-400">Building loyal tribes around your brand's unique story.</p>
-                            </div>
-                        </div>
+                    <div class="p-8 rounded-3xl card-border-glow text-center">
+                        <div class="p-3 inline-block bg-pink-600/20 rounded-xl mb-4"><i data-lucide="users" class="text-pink-400 h-8 w-8"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3">A Digital Fan Club</h4>
+                        <p class="text-gray-400">Your token holders form a powerful community. They're not just customers; they're co-owners of the brand's culture, motivated to see it succeed and spread the word.</p>
+                    </div>
+                    <div class="p-8 rounded-3xl card-border-glow text-center">
+                        <div class="p-3 inline-block bg-teal-600/20 rounded-xl mb-4"><i data-lucide="megaphone" class="text-teal-400 h-8 w-8"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3">A Self-Funding Ad</h4>
+                        <p class="text-gray-400">As your community grows and the token gains popularity, it generates buzz on its own. It's word-of-mouth marketing that pays for itself, reaching thousands organically.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Stats Section -->
+        <section id="stats" class="py-20 bg-gray-900/40">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="stat-box p-6 text-center">
+                        <p class="text-4xl font-bold gradient-text">50+</p>
+                        <p class="mt-2 text-gray-400 text-lg">Brands Launched</p>
+                    </div>
+                    <div class="stat-box p-6 text-center">
+                        <p class="text-4xl font-bold gradient-text">$15M+</p>
+                        <p class="mt-2 text-gray-400 text-lg">Total Value Created</p>
+                    </div>
+                    <div class="stat-box p-6 text-center">
+                        <p class="text-4xl font-bold gradient-text">500k+</p>
+                        <p class="mt-2 text-gray-400 text-lg">Community Members</p>
+                    </div>
+                    <div class="stat-box p-6 text-center">
+                        <p class="text-4xl font-bold gradient-text">1200%</p>
+                        <p class="mt-2 text-gray-400 text-lg">Avg. Brand Reach Growth</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- How It Works Section -->
-        <section id="how-it-works" class="py-20 sm:py-32 bg-gray-900/40">
+        <section id="how-it-works" class="py-20 sm:py-32">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Your Journey to Meme Supremacy</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto mb-16 text-lg">In four simple steps, we take your brand from concept to a full-fledged, tradable memecoin with a thriving community.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Simple, All-Inclusive Process</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto mb-16 text-lg">You bring the brand, we handle everything else. We've streamlined the entire journey to be completely hands-off and transparent for you.</p>
                 <div class="grid md:grid-cols-4 gap-8">
-                    <!-- Step 1 -->
+                    <!-- Steps 1-4 -->
                     <div class="relative text-center step-item">
                         <div class="relative inline-block">
-                             <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-indigo-500 shadow-lg shadow-indigo-500/20">
+                             <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-purple-500 shadow-lg shadow-purple-500/20">
                                 <span class="text-3xl font-bold gradient-text">1</span>
                             </div>
                             <div class="step-line hidden md:block"></div>
                         </div>
-                        <h4 class="mt-6 text-xl font-semibold">Discovery & Strategy</h4>
-                        <p class="mt-2 text-gray-400">We dive deep into your brand's DNA to craft a unique memecoin concept and a go-to-market strategy.</p>
+                        <h4 class="mt-6 text-xl font-semibold">Brand Discovery</h4>
+                        <p class="mt-2 text-gray-400">We learn your brand's voice and goals to create a memecoin concept that feels authentic and exciting to your audience.</p>
                     </div>
-                    <!-- Step 2 -->
                     <div class="relative text-center step-item">
                          <div class="relative inline-block">
-                            <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-indigo-500 shadow-lg shadow-indigo-500/20">
+                            <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-purple-500 shadow-lg shadow-purple-500/20">
                                 <span class="text-3xl font-bold gradient-text">2</span>
                             </div>
                             <div class="step-line hidden md:block"></div>
                         </div>
-                        <h4 class="mt-6 text-xl font-semibold">Token Creation & Launch</h4>
-                        <p class="mt-2 text-gray-400">Our experts handle all the technicals: smart contract development, tokenomics, and a fair, secure launch.</p>
+                        <h4 class="mt-6 text-xl font-semibold">Technical Launch</h4>
+                        <p class="mt-2 text-gray-400">Our team handles all the complex tech stuff: creating the token, ensuring security, and listing it for your community.</p>
                     </div>
-                    <!-- Step 3 -->
                     <div class="relative text-center step-item">
                          <div class="relative inline-block">
                             <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-pink-500 shadow-lg shadow-pink-500/20">
@@ -175,46 +227,60 @@
                             </div>
                             <div class="step-line hidden md:block"></div>
                         </div>
-                        <h4 class="mt-6 text-xl font-semibold">Community Building</h4>
-                        <p class="mt-2 text-gray-400">We ignite the spark with targeted campaigns, social media management, and influencer outreach to build your army.</p>
+                        <h4 class="mt-6 text-xl font-semibold">Community Ignition</h4>
+                        <p class="mt-2 text-gray-400">We kickstart the conversation and build the initial hype across social media to get your fan club started.</p>
                     </div>
-                    <!-- Step 4 -->
                     <div class="relative text-center step-item">
                          <div class="relative inline-block">
                             <div class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center border-2 border-pink-500 shadow-lg shadow-pink-500/20">
                                 <span class="text-3xl font-bold gradient-text">4</span>
                             </div>
                         </div>
-                        <h4 class="mt-6 text-xl font-semibold">Growth & Marketing</h4>
-                        <p class="mt-2 text-gray-400">Post-launch, we keep the momentum going with ongoing marketing, partnerships, and strategic ecosystem growth.</p>
+                        <h4 class="mt-6 text-xl font-semibold">Sustained Growth</h4>
+                        <p class="mt-2 text-gray-400">We don't just launch and leave. We provide ongoing marketing support to keep the momentum and community growing.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Why Memecoins Section -->
-        <section id="why-memecoins" class="py-20 sm:py-32">
+        <section id="advantage" class="py-20 sm:py-32 bg-gray-900/40">
             <div class="container mx-auto px-6">
                  <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">The Unfair Marketing Advantage</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto text-lg">A memecoin isn't just a token. It's a self-perpetuating marketing machine.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Your Unfair Marketing Advantage</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto text-lg">This isn't just another marketing channel. It's a way to build a competitive moat around your brand that others can't replicate.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-8">
-                    <div class="p-8 bg-gray-900/50 rounded-3xl card-border-glow">
-                        <div class="p-3 inline-block bg-indigo-600/20 rounded-xl mb-4"><i data-lucide="flame" class="text-indigo-400 h-8 w-8"></i></div>
-                        <h4 class="text-2xl font-semibold mb-3">Viral by Design</h4>
-                        <p class="text-gray-400">Memes are the language of the internet. A memecoin gives your community a fun, engaging, and shareable asset to rally behind.</p>
+                    <!-- Cards -->
+                    <div class="p-8 rounded-3xl card-border-glow">
+                        <div class="p-3 inline-block bg-purple-600/20 rounded-xl mb-4"><i data-lucide="rocket" class="text-purple-400 h-8 w-8"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3">Unlock Organic Virality</h4>
+                        <p class="text-gray-400">Give people a reason to talk about you. A memecoin is fun, novel, and shareable, turning your customers into a volunteer marketing army.</p>
                     </div>
-                    <div class="p-8 bg-gray-900/50 rounded-3xl card-border-glow">
-                        <div class="p-3 inline-block bg-pink-600/20 rounded-xl mb-4"><i data-lucide="shield-check" class="text-pink-400 h-8 w-8"></i></div>
-                        <h4 class="text-2xl font-semibold mb-3">Authentic Engagement</h4>
-                        <p class="text-gray-400">Move beyond passive followers. Token holders are invested stakeholders, your most passionate advocates and content creators.</p>
+                    <div class="p-8 rounded-3xl card-border-glow">
+                        <div class="p-3 inline-block bg-pink-600/20 rounded-xl mb-4"><i data-lucide="heart-handshake" class="text-pink-400 h-8 w-8"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3">Create Superfans, Not Customers</h4>
+                        <p class="text-gray-400">When customers hold your token, they're financially and emotionally invested. Their success is tied to yours, creating unparalleled brand loyalty.</p>
                     </div>
-                    <div class="p-8 bg-gray-900/50 rounded-3xl card-border-glow">
-                        <div class="p-3 inline-block bg-indigo-600/20 rounded-xl mb-4"><i data-lucide="trending-up" class="text-indigo-400 h-8 w-8"></i></div>
-                        <h4 class="text-2xl font-semibold mb-3">Exponential Reach</h4>
-                        <p class="text-gray-400">Every trade, every social media mention, every new holder expands your brand's reach organically and exponentially, far beyond traditional ads.</p>
+                    <div class="p-8 rounded-3xl card-border-glow">
+                        <div class="p-3 inline-block bg-teal-600/20 rounded-xl mb-4"><i data-lucide="pie-chart" class="text-teal-400 h-8 w-8"></i></div>
+                        <h4 class="text-2xl font-semibold mb-3">Own Your Audience</h4>
+                        <p class="text-gray-400">Stop renting your audience from social media giants. Build a direct line to your most passionate supporters in a community you control.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section id="partners" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-center text-2xl font-bold text-gray-400 mb-12">Trusted By & Seen On</h2>
+                <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                    <img src="https://placehold.co/150x50/05020D/888888?text=CoinGecko" alt="CoinGecko Logo" class="h-8 partner-logo">
+                    <img src="https://placehold.co/150x50/05020D/888888?text=DEXTools" alt="DEXTools Logo" class="h-8 partner-logo">
+                    <img src="https://placehold.co/150x50/05020D/888888?text=TechCrunch" alt="TechCrunch Logo" class="h-8 partner-logo">
+                    <img src="https://placehold.co/150x50/05020D/888888?text=Uniswap" alt="Uniswap Logo" class="h-10 partner-logo">
+                    <img src="https://placehold.co/150x50/05020D/888888?text=Forbes" alt="Forbes Logo" class="h-8 partner-logo">
                 </div>
             </div>
         </section>
@@ -223,19 +289,19 @@
         <section id="contact" class="py-20 sm:py-32 bg-gray-900/40">
             <div class="container mx-auto px-6">
                 <div class="bg-gray-900 rounded-3xl p-8 md:p-16 relative overflow-hidden">
-                    <div class="absolute -top-20 -right-20 w-60 h-60 bg-indigo-600/20 rounded-full blur-3xl"></div>
+                    <div class="absolute -top-20 -right-20 w-60 h-60 bg-purple-600/20 rounded-full blur-3xl"></div>
                     <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-pink-600/20 rounded-full blur-3xl"></div>
                     <div class="relative z-10 text-center max-w-2xl mx-auto">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Become a Legend?</h2>
-                        <p class="text-gray-400 mb-8 text-lg">Let's talk about how a memecoin can revolutionize your brand. Fill out the form below and our team will be in touch.</p>
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Build Your Movement?</h2>
+                        <p class="text-gray-400 mb-8 text-lg">Let's have a no-obligation chat about how this new marketing tool can transform your brand. Fill out the form below to get started.</p>
                         <form id="contact-form" class="space-y-6">
                             <div class="grid sm:grid-cols-2 gap-6">
-                                <input type="text" placeholder="Your Name" name="name" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
-                                <input type="email" placeholder="Your Email" name="email" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+                                <input type="text" placeholder="Your Name" name="name" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all">
+                                <input type="email" placeholder="Your Email" name="email" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all">
                             </div>
-                            <input type="text" placeholder="Company Name" name="company" class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
-                            <textarea placeholder="Tell us about your project..." name="message" rows="4" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"></textarea>
-                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg shadow-indigo-600/30">Launch Inquiry</button>
+                            <input type="text" placeholder="Company Name" name="company" class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all">
+                            <textarea placeholder="Tell us about your brand..." name="message" rows="4" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"></textarea>
+                            <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 shadow-lg shadow-purple-600/30">Request a Free Consultation</button>
                         </form>
                         <div id="form-message" class="mt-4 text-lg"></div>
                     </div>
@@ -248,11 +314,15 @@
     <footer class="border-t border-gray-800">
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <p class="text-gray-500">&copy; 2024 LaunchYourMeme.com. All Rights Reserved.</p>
+                <p class="text-gray-500">&copy; 2025 LaunchYourMeme.com. All Rights Reserved.</p>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-500 hover:text-white"><i data-lucide="twitter"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-white"><i data-lucide="send"></i></a>
-                    <a href="#" class="text-gray-500 hover:text-white"><i data-lucide="message-circle"></i></a>
+                    <a href="https://x.com" target="_blank" class="text-gray-500 hover:text-white">
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://telegram.org" target="_blank" class="text-gray-500 hover:text-white"><i data-lucide="send"></i></a>
+                    <a href="https://discord.com" target="_blank" class="text-gray-500 hover:text-white"><i data-lucide="message-circle"></i></a>
                 </div>
             </div>
         </div>
@@ -289,7 +359,6 @@
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Basic validation feedback
             const name = contactForm.elements['name'].value;
             const email = contactForm.elements['email'].value;
             const message = contactForm.elements['message'].value;
@@ -300,8 +369,7 @@
                 return;
             }
 
-            // Simulate form submission
-            formMessage.textContent = 'Thank you for your inquiry! We will be in touch shortly.';
+            formMessage.textContent = 'Thank you! We\'ve received your request and will be in touch shortly.';
             formMessage.style.color = '#4ade80'; // green-400
             contactForm.reset();
 
