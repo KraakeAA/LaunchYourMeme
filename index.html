@@ -80,7 +80,7 @@
                 <a href="#advantage" class="text-gray-300 hover:text-white transition-colors">Your Advantage</a>
                 <a href="#faq" class="text-gray-300 hover:text-white transition-colors">FAQ</a>
             </nav>
-            <a href="#contact" class="hidden md:block primary-button text-white font-semibold py-2 px-5 rounded-lg">Get a Proposal</a>
+            <a href="#contact" class="hidden md:block primary-button text-white font-semibold py-2 px-5 rounded-lg">Contact Us</a>
             <button id="mobile-menu-button" class="md:hidden text-white">
                 <i data-lucide="menu"></i>
             </button>
@@ -91,7 +91,7 @@
              <a href="#how-it-works" class="block py-2 text-gray-300 hover:text-white">Our Process</a>
              <a href="#advantage" class="block py-2 text-gray-300 hover:text-white">Your Advantage</a>
              <a href="#faq" class="block py-2 text-gray-300 hover:text-white">FAQ</a>
-             <a href="#contact" class="block mt-2 primary-button text-white font-semibold py-2 px-4 rounded-lg text-center">Get a Proposal</a>
+             <a href="#contact" class="block mt-2 primary-button text-white font-semibold py-2 px-4 rounded-lg text-center">Contact Us</a>
         </div>
     </header>
 
@@ -268,24 +268,17 @@
                     <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-pink-600/10 rounded-full blur-3xl"></div>
                     <div class="relative z-10 text-center max-w-2xl mx-auto">
                         <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Build Your Movement?</h2>
-                        <p class="text-gray-400 mb-8 text-lg">Let's have a no-obligation chat about how this new marketing tool can transform your brand. Fill out the form below to get a customized proposal.</p>
-                        <!-- 
-                            FORM SETUP INSTRUCTIONS:
-                            1. Go to https://formspree.io/ and create a free account.
-                            2. Create a "New Form" and set its destination email to your company's email address.
-                            3. Formspree will give you a unique URL endpoint.
-                            4. Replace the placeholder URL in the `action` attribute below with your unique Formspree URL.
-                        -->
-                        <form id="contact-form" action="https://formspree.io/f/your_unique_code" method="POST" class="space-y-6">
+                        <p class="text-gray-400 mb-8 text-lg">Let's have a no-obligation chat about how this new marketing tool can transform your brand. Fill out the form below to get in touch.</p>
+                        
+                        <form id="contact-form" action="mailto:benjamin@launchyourmeme.com" method="POST" enctype="text/plain" class="space-y-6">
                             <div class="grid sm:grid-cols-2 gap-6">
-                                <input type="text" name="name" placeholder="Your Name" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all">
-                                <input type="email" name="email" placeholder="Your Email" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all">
+                                <input type="text" name="Name" placeholder="Your Name" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all">
+                                <input type="email" name="From_Email" placeholder="Your Email" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all">
                             </div>
-                            <input type="text" name="company" placeholder="Company Name" class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all">
-                            <textarea name="message" placeholder="Tell us about your brand..." rows="4" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all"></textarea>
-                            <button type="submit" class="w-full primary-button text-white font-bold py-3 px-8 rounded-full text-lg">Request a Free Proposal</button>
+                            <input type="text" name="Company" placeholder="Company Name" class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all">
+                            <textarea name="Message" placeholder="Tell us about your brand..." rows="4" required class="w-full bg-gray-800/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all"></textarea>
+                            <button type="submit" class="w-full primary-button text-white font-bold py-3 px-8 rounded-full text-lg">Send Us An Email</button>
                         </form>
-                        <div id="form-message" class="mt-4 text-lg"></div>
                     </div>
                 </div>
             </div>
@@ -337,44 +330,6 @@
                 }
             });
         });
-
-        // Contact Form Submission
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const data = new FormData(form);
-            const action = form.action;
-            
-            fetch(action, {
-                method: 'POST',
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    formMessage.textContent = 'Thank you! We\'ve received your request and will be in touch shortly.';
-                    formMessage.style.color = '#F472B6';
-                    form.reset();
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            formMessage.textContent = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            formMessage.textContent = 'Oops! There was a problem submitting your form';
-                        }
-                        formMessage.style.color = '#F87171'; // red-400
-                    })
-                }
-            }).catch(error => {
-                formMessage.textContent = 'Oops! There was a problem submitting your form';
-                formMessage.style.color = '#F87171'; // red-400
-            });
-
-            setTimeout(() => { formMessage.textContent = ''; }, 6000);
-        });
         
         // FAQ Accordion
         document.querySelectorAll('details').forEach((detail) => {
@@ -387,6 +342,9 @@
                 }
             });
         });
+
+        // NOTE: The form submission is now handled by the `mailto:` action in the HTML form tag.
+        // No special JavaScript is needed for the form to work.
     </script>
 </body>
 </html>
